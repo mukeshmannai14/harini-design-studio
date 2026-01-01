@@ -1,17 +1,72 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Phone, Clock, Mail, Youtube, Sparkles } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { MessageCircle, Phone, Clock, Mail, Youtube, Sparkles, Send, Loader2 } from "lucide-react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const { toast } = useToast();
+  
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const whatsappNumber = "918270590414";
   const whatsappMessage = encodeURIComponent("Hi! I'm interested in the Aari Design classes. Please share more details.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   const email = "stharinithiruvengadam@gmail.com";
   const youtubeChannel = "https://www.youtube.com/@HARINIDESIGNER";
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      toast({
+        title: "Missing fields",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    const { error } = await supabase
+      .from("contact_submissions")
+      .insert({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim() || null,
+        message: formData.message.trim(),
+      });
+
+    setIsSubmitting(false);
+
+    if (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit. Please try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    toast({
+      title: "Message sent!",
+      description: "We'll get back to you soon.",
+    });
+    
+    setFormData({ name: "", email: "", phone: "", message: "" });
+  };
 
   const contactInfo = [
     {
@@ -139,6 +194,98 @@ const Contact = () => {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="mb-16"
+          >
+            <div className="bg-card rounded-3xl shadow-elegant p-8 md:p-12 border-gradient">
+              <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-8 text-center">
+                Send Us a Message
+              </h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                      Name *
+                    </label>
+                    <Input
+                      id="name"
+                      type="text"
+                      placeholder="Your name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="bg-background"
+                      maxLength={100}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                      Email *
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="your@email.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="bg-background"
+                      maxLength={255}
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                    Phone (optional)
+                  </label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="+91 98765 43210"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="bg-background"
+                    maxLength={20}
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                    Message *
+                  </label>
+                  <Textarea
+                    id="message"
+                    placeholder="Tell us about your requirements..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="bg-background min-h-[120px]"
+                    maxLength={1000}
+                  />
+                </div>
+                
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </motion.div>
+              </form>
+            </div>
           </motion.div>
 
           {/* WhatsApp CTA */}

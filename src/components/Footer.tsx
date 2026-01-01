@@ -73,13 +73,16 @@ const Footer = () => {
               Our Services
             </h4>
             <ul className="space-y-3 text-sm text-white font-semibold">
-              <li className="hover:text-gold-400 transition-colors cursor-pointer">Aari Work</li>
-              <li className="hover:text-gold-400 transition-colors cursor-pointer">Brooch Work</li>
-              <li className="hover:text-gold-400 transition-colors cursor-pointer">Fabric Painting</li>
-              <li className="hover:text-gold-400 transition-colors cursor-pointer">Saree Pre-Pleating</li>
-              <li className="hover:text-gold-400 transition-colors cursor-pointer">Custom Design Bracelet</li>
-              <li className="hover:text-gold-400 transition-colors cursor-pointer">Custom Design Neck Set</li>
-              <li className="hover:text-gold-400 transition-colors cursor-pointer">Silk Thread Bridal Bangle</li>
+              {['Aari Work', 'Brooch Work', 'Fabric Painting', 'Saree Pre-Pleating', 'Custom Design Bracelet', 'Custom Design Neck Set', 'Silk Thread Bridal Bangle'].map((service) => (
+                <li key={service}>
+                  <a 
+                    href="#services" 
+                    className="hover:text-gold-400 transition-colors cursor-pointer"
+                  >
+                    {service}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-peacock-embroidery.jpg";
+import heroImage from "@/assets/hero-embroidery-new.jpg";
 import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 

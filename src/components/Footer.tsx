@@ -26,14 +26,14 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-b from-burgundy-900 via-burgundy-950 to-black overflow-hidden">
+    <footer className="relative bg-burgundy overflow-hidden">
       {/* Decorative Background Elements */}
-      <div className="absolute inset-0 bg-pattern opacity-5" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-burgundy to-burgundy-light opacity-50" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
       
       {/* Floating Decorative Elements */}
       <motion.div
-        className="absolute top-20 left-10 w-32 h-32 bg-gold-400/5 rounded-full blur-3xl"
+        className="absolute top-20 left-10 w-32 h-32 bg-gold/5 rounded-full blur-3xl"
         animate={{ y: [-10, 10, -10], scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -69,7 +69,7 @@ const Footer = () => {
             Preserving the timeless art of Aari embroidery, crafting exquisite bridal designs with passion and precision.
           </p>
           <motion.div 
-            className="flex items-center gap-2 mt-4 text-gold-400"
+            className="flex items-center gap-2 mt-4 text-gold"
             animate={{ opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
@@ -89,8 +89,8 @@ const Footer = () => {
         >
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-gold-400 mb-6 flex items-center gap-2">
-              <span className="w-8 h-px bg-gold-400" />
+            <h4 className="text-sm font-bold uppercase tracking-wider text-gold mb-6 flex items-center gap-2">
+              <span className="w-8 h-px bg-gold" />
               Quick Links
             </h4>
             <ul className="space-y-4">
@@ -98,10 +98,10 @@ const Footer = () => {
                 <li key={item}>
                   <motion.a 
                     href={`#${item.toLowerCase()}`} 
-                    className="text-white/80 hover:text-gold-400 transition-all duration-300 flex items-center gap-2 group text-sm font-medium"
+                    className="text-white/80 hover:text-gold transition-all duration-300 flex items-center gap-2 group text-sm font-medium"
                     whileHover={{ x: 5 }}
                   >
-                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gold-400" />
+                    <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gold" />
                     {item}
                   </motion.a>
                 </li>
@@ -111,8 +111,8 @@ const Footer = () => {
 
           {/* Services */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-gold-400 mb-6 flex items-center gap-2">
-              <span className="w-8 h-px bg-gold-400" />
+            <h4 className="text-sm font-bold uppercase tracking-wider text-gold mb-6 flex items-center gap-2">
+              <span className="w-8 h-px bg-gold" />
               Our Services
             </h4>
             <ul className="space-y-4 text-sm text-white/80">
@@ -120,10 +120,10 @@ const Footer = () => {
                 <li key={service}>
                   <motion.a 
                     href="#services" 
-                    className="hover:text-gold-400 transition-all duration-300 flex items-center gap-2 group"
+                    className="hover:text-gold transition-all duration-300 flex items-center gap-2 group"
                     whileHover={{ x: 5 }}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold-400/50 group-hover:bg-gold-400 transition-colors" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold/50 group-hover:bg-gold transition-colors" />
                     {service}
                   </motion.a>
                 </li>
@@ -133,8 +133,8 @@ const Footer = () => {
 
           {/* Contact Info */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-gold-400 mb-6 flex items-center gap-2">
-              <span className="w-8 h-px bg-gold-400" />
+            <h4 className="text-sm font-bold uppercase tracking-wider text-gold mb-6 flex items-center gap-2">
+              <span className="w-8 h-px bg-gold" />
               Get in Touch
             </h4>
             <div className="space-y-5">
@@ -142,8 +142,8 @@ const Footer = () => {
                 className="flex items-start gap-4 group"
                 whileHover={{ x: 5 }}
               >
-                <div className="w-10 h-10 rounded-full bg-gold-400/10 flex items-center justify-center group-hover:bg-gold-400/20 transition-colors">
-                  <MapPin className="w-4 h-4 text-gold-400" />
+                <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                  <MapPin className="w-4 h-4 text-gold" />
                 </div>
                 <div>
                   <p className="text-white text-sm font-semibold mb-1">Our Location</p>
@@ -158,12 +158,12 @@ const Footer = () => {
                 className="flex items-start gap-4 group"
                 whileHover={{ x: 5 }}
               >
-                <div className="w-10 h-10 rounded-full bg-gold-400/10 flex items-center justify-center group-hover:bg-gold-400/20 transition-colors">
-                  <Mail className="w-4 h-4 text-gold-400" />
+                <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                  <Mail className="w-4 h-4 text-gold" />
                 </div>
                 <div>
                   <p className="text-white text-sm font-semibold mb-1">Email Us</p>
-                  <p className="text-white/70 text-sm hover:text-gold-400 transition-colors">
+                  <p className="text-white/70 text-sm hover:text-gold transition-colors">
                     stharinithiruvengadam@gmail.com
                   </p>
                 </div>
@@ -172,8 +172,8 @@ const Footer = () => {
                 className="flex items-start gap-4 group"
                 whileHover={{ x: 5 }}
               >
-                <div className="w-10 h-10 rounded-full bg-gold-400/10 flex items-center justify-center group-hover:bg-gold-400/20 transition-colors">
-                  <Clock className="w-4 h-4 text-gold-400" />
+                <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                  <Clock className="w-4 h-4 text-gold" />
                 </div>
                 <div>
                   <p className="text-white text-sm font-semibold mb-1">Business Hours</p>
@@ -187,8 +187,8 @@ const Footer = () => {
 
           {/* Social & CTA */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-gold-400 mb-6 flex items-center gap-2">
-              <span className="w-8 h-px bg-gold-400" />
+            <h4 className="text-sm font-bold uppercase tracking-wider text-gold mb-6 flex items-center gap-2">
+              <span className="w-8 h-px bg-gold" />
               Connect With Us
             </h4>
             <p className="text-white/70 text-sm mb-6 leading-relaxed">
@@ -199,7 +199,7 @@ const Footer = () => {
                 href="https://wa.me/your-number" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400/20 to-gold-400/5 border border-gold-400/30 flex items-center justify-center hover:bg-gold-400 hover:text-burgundy-900 transition-all duration-300 text-white group"
+                className="w-12 h-12 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-burgundy transition-all duration-300 text-white group"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -207,7 +207,7 @@ const Footer = () => {
               </motion.a>
               <motion.a 
                 href="mailto:stharinithiruvengadam@gmail.com"
-                className="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400/20 to-gold-400/5 border border-gold-400/30 flex items-center justify-center hover:bg-gold-400 hover:text-burgundy-900 transition-all duration-300 text-white group"
+                className="w-12 h-12 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-burgundy transition-all duration-300 text-white group"
                 whileHover={{ scale: 1.1, rotate: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -217,7 +217,7 @@ const Footer = () => {
                 href="https://www.youtube.com/@HARINIDESIGNER" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400/20 to-gold-400/5 border border-gold-400/30 flex items-center justify-center hover:bg-gold-400 hover:text-burgundy-900 transition-all duration-300 text-white group"
+                className="w-12 h-12 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-burgundy transition-all duration-300 text-white group"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -226,7 +226,7 @@ const Footer = () => {
             </div>
             <motion.a 
               href="#classes"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gold-400 to-gold-500 text-burgundy-900 rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-gold-400/30 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gold to-gold-light text-burgundy rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-gold/30 transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -251,15 +251,15 @@ const Footer = () => {
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1, repeat: Infinity }}
               >
-                <Heart className="w-4 h-4 text-gold-400 fill-gold-400" />
+                <Heart className="w-4 h-4 text-gold fill-gold" />
               </motion.span>
               © {currentYear} Harini Designer. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-white/50 text-sm">
               <span>Mannargudi</span>
-              <span className="w-1 h-1 rounded-full bg-gold-400" />
+              <span className="w-1 h-1 rounded-full bg-gold" />
               <span>Tamil Nadu</span>
-              <span className="w-1 h-1 rounded-full bg-gold-400" />
+              <span className="w-1 h-1 rounded-full bg-gold" />
               <span>India</span>
             </div>
           </div>

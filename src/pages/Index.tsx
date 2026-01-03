@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import Classes from "@/components/Classes";
 import Gallery from "@/components/Gallery";
+import BeforeAfter from "@/components/BeforeAfter";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
@@ -18,6 +19,7 @@ const Index = () => {
         <Services />
         <Classes />
         <Gallery />
+        <BeforeAfter />
         <Contact />
       </main>
       <Footer />
